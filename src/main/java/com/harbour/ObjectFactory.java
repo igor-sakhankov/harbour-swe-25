@@ -5,6 +5,7 @@ import org.reflections.Reflections;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
+import java.util.Set;
 
 public class ObjectFactory {
 
@@ -17,14 +18,27 @@ public class ObjectFactory {
 
     @SneakyThrows
     public <T> T createObject(Class<T> classOfObject) {
-        if(classOfObject.isInterface()) {
+        if (classOfObject.isInterface()) {
             var implementationClass = (Class<T>) scanner.getSubTypesOf(classOfObject).stream().findFirst().get();
-            return createInstance(implementationClass);
+            T andConfigureInstance = createAndConfigureInstance(implementationClass);
+            return andConfigureInstance;
         }
-        return createInstance(classOfObject);
+        return createAndConfigureInstance(classOfObject);
     }
 
-    private <T> T createInstance(Class<T> maybeInterface) throws InstantiationException, IllegalAccessException, InvocationTargetException {
-        return (T) Arrays.stream(maybeInterface.getDeclaredConstructors()).findFirst().get().newInstance();
+    private <T> T createAndConfigureInstance(Class<T> maybeInterface) throws InstantiationException, IllegalAccessException, InvocationTargetException {
+        Object object = Arrays.stream(maybeInterface.getDeclaredConstructors()).findFirst().get().newInstance();
+        configure(object);
+        return (T) object;
     }
+
+    @SneakyThrows
+    private void configure(Object object) {
+        Set<Class<? extends ObjectConfigurator>> subTypesOf = scanner.getSubTypesOf(ObjectConfigurator.class);
+        for (Class<? extends ObjectConfigurator> type : subTypesOf) {
+            ObjectConfigurator objectConfigurator = type.getDeclaredConstructor().newInstance();
+            objectConfigurator.configure(object);
+        }
+    }
+
 }
