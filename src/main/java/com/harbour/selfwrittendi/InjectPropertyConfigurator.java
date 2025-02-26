@@ -1,4 +1,4 @@
-package com.harbour;
+package com.harbour.selfwrittendi;
 
 import lombok.SneakyThrows;
 

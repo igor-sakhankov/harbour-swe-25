@@ -1,8 +1,7 @@
 package com.harbour;
 
+import com.harbour.selfwrittendi.ClassRoom;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ClassRoomTest {
 
