@@ -1,5 +1,9 @@
 package com.harbour.selfwrittendi;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class ClassRoom {
     @InjectByType
     private ITeacher teacher;
@@ -12,5 +16,9 @@ public class ClassRoom {
         teacherAssistant.turnOnProjector();
         teacher.teach();
         teacherAssistant.turnOffProjector();
+    }
+
+    public void setTeacher(IgorTeacher teacher) {
+        this.teacher = teacher;
     }
 }
