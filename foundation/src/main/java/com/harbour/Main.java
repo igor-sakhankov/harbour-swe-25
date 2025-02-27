@@ -1,6 +1,5 @@
 package com.harbour;
 
-
 import com.harbour.spring.Capuccino;
 import com.harbour.spring.Capuccino2;
 import org.springframework.context.ApplicationContext;
@@ -13,5 +12,8 @@ public class Main {
         Capuccino2 bean2 = context.getBean("capuccino2", Capuccino2.class);
         bean.getInformation();
         bean2.getInformation();
+
+        new BarristaConfg().skimMilk();
+        new Capuccino(null).getInformation();
     }
 }
