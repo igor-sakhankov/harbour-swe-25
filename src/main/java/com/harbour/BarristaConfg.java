@@ -12,12 +12,20 @@ import org.springframework.context.annotation.Configuration;
 public class BarristaConfg {
 
     @Bean
-    Capuccino decafCapuccino(Coffee coffee, Milk milk) {
-        return new Capuccino(coffee);
+    Capuccino decafCapuccino(Coffee coffee, Milk skimMilk) {
+        Capuccino capuccino = new Capuccino(coffee);
+        capuccino.setMilk(skimMilk());
+        return capuccino;
     }
 
     @Bean
     String fatContent() {
         return "2%";
+    }
+
+    @Bean
+    Milk skimMilk() {
+        System.out.println("Creating milk");
+        return new Milk();
     }
 }

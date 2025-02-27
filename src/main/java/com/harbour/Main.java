@@ -13,5 +13,8 @@ public class Main {
         Capuccino2 bean2 = context.getBean("capuccino2", Capuccino2.class);
         bean.getInformation();
         bean2.getInformation();
+
+        new BarristaConfg().skimMilk();
+        new Capuccino(null).getInformation();
     }
 }
