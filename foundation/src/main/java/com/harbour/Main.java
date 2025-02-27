@@ -1,6 +1,5 @@
 package com.harbour;
 
-
 import com.harbour.spring.Capuccino;
 import com.harbour.spring.Capuccino2;
 import org.springframework.context.ApplicationContext;
