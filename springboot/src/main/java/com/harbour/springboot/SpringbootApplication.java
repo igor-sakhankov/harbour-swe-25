@@ -1,17 +1,21 @@
 package com.harbour.springboot;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.List;
 
+@Slf4j
 @SpringBootApplication
 public class SpringbootApplication {
 
     public static void main(String[] args) {
 
-        List.of(1,2,4).forEach(System.out::println);
-        SpringApplication.run(SpringbootApplication.class, args);
+	log.info("SpringbootApplication started");
+	log.info(System.currentTimeMillis() + " ");
+
+	System.currentTimeMillis();
+	SpringApplication.run(SpringbootApplication.class, args);
     }
 
 }
