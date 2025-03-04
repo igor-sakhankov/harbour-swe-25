@@ -10,7 +10,7 @@ public class SpringbootApplication {
 
     public static void main(String[] args) {
 
-        List.of().forEach(System.out::println);
+        List.of(1,2,4).forEach(System.out::println);
         SpringApplication.run(SpringbootApplication.class, args);
     }
 
