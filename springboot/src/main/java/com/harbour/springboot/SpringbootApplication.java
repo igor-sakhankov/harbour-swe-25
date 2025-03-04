@@ -9,8 +9,6 @@ import java.util.List;
 public class SpringbootApplication {
 
     public static void main(String[] args) {
-
-        List.of().forEach(System.out::println);
         SpringApplication.run(SpringbootApplication.class, args);
     }
 
